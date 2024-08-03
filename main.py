@@ -31,6 +31,9 @@ def save():
 
     if len(website) == 0 or len(password) == 0:
         messagebox.showinfo(title="Oops", message="Please make sure you haven't left any fields empty.")
+    if len(password) < 8:
+        messagebox.showinfo(title="Password Too Short", message="Your password must be at least 8 characters long.")
+        return
     else:
         is_ok = messagebox.askokcancel(title=website, message=f"These are the details entered: \nEmail: {email} "
                                                       f"\nPassword: {password} \nIs it ok to save?")
@@ -44,7 +47,7 @@ def save():
 # ---------------------------- UI SETUP ------------------------------- #
 
 window = Tk()
-window.title("Password Manager")
+window.title("Password Manager by Arjun")
 window.config(padx=50, pady=50)
 
 canvas = Canvas(height=200, width=200)
@@ -71,7 +74,7 @@ email_entry = Entry(width=35)
 email_entry.grid(row=2, column=1, columnspan=2)
 email_entry.insert(0, "arjun.aj2002@gmail.com")
 
-password_entry = Entry(width=21)
+password_entry = Entry(width=21,show="✭")
 password_entry.grid(row=3, column=1)
 
 # Buttons
